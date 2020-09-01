@@ -1,0 +1,17 @@
+version: "3.4"
+services:
+  jupyter:
+    build: ''
+    image: htguideseq/develop
+    ports:
+      - ${JUPYTER_PORT}:8888
+    volumes:
+      - ${GUIDE_DATA}:/home/jovyan/data/
+      - .:/home/jovyan/
+    environment:
+      GRANT_SUDO: "yes"
+      JUPYTER_ENABLE_LAB: "yes"
+    # enable sudo permissions
+    user:
+      "root"
+    restart: always
